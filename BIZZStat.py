@@ -22,6 +22,6 @@ data = {
 
 # 6. Save to news_output.json with indentation for readability
 with open("news_output.json", "w") as f:
-    json.dump(data, f, indent=4)
+    json.dump(data, f, indent=4, default=str)  # Fix: handles datetime objects
 
 print("✅ Scraping complete. Saved to news_output.json")
