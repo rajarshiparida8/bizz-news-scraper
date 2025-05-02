@@ -1,6 +1,7 @@
 from GoogleNews import GoogleNews
 import json
 from datetime import datetime
+import os
 
 # 1. Initialize GoogleNews object (set period to 1 day)
 googlenews = GoogleNews(period='1d')
@@ -20,8 +21,13 @@ data = {
     "results": results
 }
 
-# 6. Save to news_output.json with indentation for readability
-with open("news_output.json", "w") as f:
+# Ensure the docs/ folder exists
+os.makedirs("docs", exist_ok=True)
+
+# Save in docs/news_output.json
+with open("docs/news_output.json", "w") as f:
     json.dump(data, f, indent=4, default=str)  # Fix: handles datetime objects
+
+
 
 print("✅ Scraping complete. Saved to news_output.json")
