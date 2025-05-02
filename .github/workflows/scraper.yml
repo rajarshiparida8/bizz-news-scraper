@@ -26,10 +26,10 @@ jobs:
       run: |
         python BIZZStat.py
 
-    - name: Commit and push updated news_output.json
+    - name: Commit and push updated JSON to repo
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add docs/news_output.json
         git commit -m "🔄 Update news_output.json [bot]" || echo "No changes to commit"
-        git push
+        git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git HEAD:main
